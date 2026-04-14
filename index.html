@@ -31,21 +31,15 @@
     fbq('track', 'PageView');
 
     document.addEventListener("DOMContentLoaded", function () {
-      const purchaseKey = "purchase_pixel_fired";
+      // 2) Purchase — dispara sempre (teste)
+      var eventID = 'purchase_' + Date.now();
 
-      // 2) Purchase — dispara apenas uma vez
-      if (!localStorage.getItem(purchaseKey)) {
-        var eventID = 'purchase_' + Date.now();
-
-        fbq('track', 'Purchase', {
-          value: 10.00,
-          currency: 'BRL'
-        }, {
-          eventID: eventID
-        });
-
-        localStorage.setItem(purchaseKey, "true");
-      }
+      fbq('track', 'Purchase', {
+        value: 10.00,
+        currency: 'BRL'
+      }, {
+        eventID: eventID
+      });
 
       // Redirecionamento após 2 segundos
       setTimeout(function () {
