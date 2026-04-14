@@ -34,10 +34,7 @@
       // 2) Purchase — dispara sempre (teste)
       var eventID = 'purchase_' + Date.now();
 
-      fbq('track', 'Purchase', {
-        value: 10.00,
-        currency: 'BRL'
-      }, {
+      fbq('track', 'Purchase', {}, {
         eventID: eventID
       });
 
