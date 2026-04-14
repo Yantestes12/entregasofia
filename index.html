@@ -27,12 +27,15 @@
     // Inicializa o Pixel
     fbq('init', '1734892147494763');
 
+    // 1) PageView — dispara sempre
+    fbq('track', 'PageView');
+
     document.addEventListener("DOMContentLoaded", function () {
       const purchaseKey = "purchase_pixel_fired";
 
-      // Dispara o evento Purchase apenas uma vez
+      // 2) Purchase — dispara apenas uma vez
       if (!localStorage.getItem(purchaseKey)) {
-        const eventID = 'purchase_' + Date.now();
+        var eventID = 'purchase_' + Date.now();
 
         fbq('track', 'Purchase', {
           value: 10.00,
@@ -50,6 +53,12 @@
       }, 2000);
     });
   </script>
+
+  <!-- Noscript fallback do Pixel -->
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1734892147494763&ev=PageView&noscript=1" />
+  </noscript>
 
   <!-- Fallback caso o JavaScript esteja desativado -->
   <meta http-equiv="refresh" content="3;url=https://sofia-vip.vercel.app/" />
